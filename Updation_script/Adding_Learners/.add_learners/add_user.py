@@ -49,7 +49,7 @@ class AddUser(unittest.TestCase):
 
         time.sleep(2)
         # driver.find_element_by_xpath("//button[@class='login-btn button _1ldxz69 raised']").click()
-        driver.find_element_by_xpath("//button[contains(text(), 'Sign in')]").click()
+        driver.find_element_by_xpath("//span[contains(text(), 'Sign in')]").click()
 
         time.sleep(5)
         if (text_invalid_user in self.driver.page_source):
