@@ -39,7 +39,7 @@ class AddUser(unittest.TestCase):
         # print("After")   
         driver.find_element_by_xpath("//div[@id='username']//input[@class='ui-textbox-input']").send_keys(uname)
         time.sleep(2)
-        driver.find_element_by_xpath("//button[contains(text(), 'Sign in')]").click()
+        driver.find_element_by_xpath("//span[contains(text(), 'Sign in')]").click()
         # driver.find_element_by_xpath("//button[@class='login-btn button _1ldxz69 raised']").click()
 
         time.sleep(2)
