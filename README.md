@@ -10,4 +10,4 @@
 
 - Link to documentation is given below
 
-https://docs.google.com/document/d/1EsxgwZVim27RUFk_Z5UcTbbNL9f-e-Bgf1JKxdMmf3k/edit
+https://docs.google.com/document/d/1aqJflqIgWV4jFLeOSoX_oiqXg20npLHmDoKkVadRxXI/edit
