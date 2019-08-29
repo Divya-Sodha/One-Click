@@ -20,8 +20,8 @@ class AddUser(unittest.TestCase):
     def setUp(self):
         # self.driver = webdriver.Firefox()
         # self.driver = webdriver.Firefox()
-    	self.driver = webdriver.Chrome()        
-    	self.driver.implicitly_wait(30)
+	self.driver = webdriver.Chrome()        
+	self.driver.implicitly_wait(30)
         self.base_url = "http://localhost:8080"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -34,28 +34,25 @@ class AddUser(unittest.TestCase):
         driver = self.driver
         driver.get(self.base_url + "/user#/signin")
         time.sleep(2)
-        # print("Before")
-        driver.find_element_by_xpath("//div[@id='username']//input[@class='ui-textbox-input']").clear()
-        # print("After")   
-        driver.find_element_by_xpath("//div[@id='username']//input[@class='ui-textbox-input']").send_keys(uname)
+	driver.find_element_by_xpath("//div[@id='username']//input[@class='ui-textbox__input']").clear()      
+	driver.find_element_by_xpath("//div[@id='username']//input[@class='ui-textbox__input']").send_keys(uname)
+	time.sleep(2)
+	driver.find_element_by_xpath("//button[@class='login-btn button primary raised']").click()
+	
+
+	
+	time.sleep(2)
+	driver.find_element_by_xpath("//div[@id='password']//input[@class='ui-textbox__input']").clear()
+
+	driver.find_element_by_xpath("//div[@id='password']//input[@class='ui-textbox__input']").send_keys(password)      
+	
         time.sleep(2)
-        driver.find_element_by_xpath("//span[contains(text(), 'Sign in')]").click()
-        # driver.find_element_by_xpath("//button[@class='login-btn button _1ldxz69 raised']").click()
-
-        time.sleep(2)
-        driver.find_element_by_xpath("//div[@id='password']//input[@class='ui-textbox-input']").clear()
-
-        driver.find_element_by_xpath("//div[@id='password']//input[@class='ui-textbox-input']").send_keys(password)      
-
-        time.sleep(2)
-        # driver.find_element_by_xpath("//button[@class='login-btn button _1ldxz69 raised']").click()
-        driver.find_element_by_xpath("//span[contains(text(), 'Sign in')]").click()
-
-        time.sleep(5)
-        if (text_invalid_user in self.driver.page_source):
-            return False
+        driver.find_element_by_xpath("//button[@class='login-btn button primary raised']").click()
+	time.sleep(5)
+	if (text_invalid_user in self.driver.page_source):
+                return False
         self.read_file_data(fname)
-
+        
     def is_element_present(self, how, what):
         try: self.driver.find_element(by=how, value=what)
         except NoSuchElementException as e: return False
@@ -88,10 +85,10 @@ class AddUser(unittest.TestCase):
 
         xl_sheet = xl_workbook.sheet_by_index(0)
         # print ('Sheet name: %s' % xl_sheet.name)
-    	time.sleep(3)
-    	driver = self.driver
-    	driver.get("http://localhost:8080/facility/#/users")
-    	time.sleep(5)
+	time.sleep(3)
+	driver = self.driver
+	driver.get("http://localhost:8080/facility/#/users")
+	time.sleep(5)
         # Print all values, iterating through rows and columns
         num_cols = xl_sheet.ncols   # Number of columns
         for row_idx in range(0, xl_sheet.nrows):    # Iterate through rows
@@ -130,53 +127,53 @@ class AddUser(unittest.TestCase):
         Returns:
             True(Boolean) = if user created successfully else False
         """
-        print(name)
+	print(name)
         try:
             if not name and not username and not password and not confirm_pass:
                 return False, None
             if password != confirm_pass:
                 return False, None
             driver = self.driver
-    	    table = driver.find_element_by_xpath("//table[@class='core-table']")
-    	    rows = table.find_elements(By.TAG_NAME, "tr")
-            # print(rows)
-    	    names = []
-    	    for row in rows[1:]:
-                row1 = row.find_elements(By.TAG_NAME, "td")
-                names.append(row1[2].text)
-            # print(names)
-    		
-    	    time.sleep(3)
-            driver.find_element_by_xpath("//span[contains(text(), 'New User')]").click()
+	    table = driver.find_element_by_xpath("//table[@class='core-table']")
+	    rows = table.find_elements(By.TAG_NAME, "tr")
+	    names = []
+	    for row in rows[1:]:
+		row1 = row.find_elements(By.TAG_NAME, "td")
+		names.append(row1[3].text)
+		
+		
+	    time.sleep(5)
+            driver.find_element_by_xpath("//button[@class='button primary raised']").click()
 
-    	    time.sleep(1)
-            driver.find_element_by_css_selector("input.ui-textbox-input").clear()
-            driver.find_element_by_css_selector("input.ui-textbox-input").send_keys(name)
+	    time.sleep(1)
+            driver.find_element_by_css_selector("input.ui-textbox__input").clear()
+            driver.find_element_by_css_selector("input.ui-textbox__input").send_keys(name)
             time.sleep(1)
             driver.find_element_by_xpath("(//input[@type='text'])[2]").clear()
             driver.find_element_by_xpath("(//input[@type='text'])[2]").send_keys(username)
-            time.sleep(2)
-    	    driver.find_element_by_xpath("//input[@type='password']").clear()
+	    driver.find_element_by_xpath("//input[@type='password']").clear()
             text = "Username already exists"
+            
 
-           
-            time.sleep(1)
             if username in names:
-                driver.find_element_by_xpath("//span[contains(text(), 'Cancel')]").click()
-                return None, username 
-            else:
-                time.sleep(1)
-                driver.find_element_by_xpath("//input[@type='password']").send_keys(password)
-                time.sleep(1)
-                driver.find_element_by_xpath("(//input[@type='password'])[2]").clear()
-                time.sleep(1)
-                driver.find_element_by_xpath("(//input[@type='password'])[2]").send_keys(confirm_pass)
-                time.sleep(1)
+		driver.find_element_by_xpath("//button[contains(text(), 'Cancel')]").click()
+		return None, username 
+		
+	    else:
+		time.sleep(2)
 
-                driver.find_element_by_xpath("//span[contains(text(), 'Save')]").click()
+		driver.find_element_by_xpath("//input[@type='password']").clear()
+                driver.find_element_by_xpath("//input[@type='password']").send_keys(password)
+                time.sleep(2)
+                driver.find_element_by_xpath("(//input[@type='password'])[2]").clear()
+                driver.find_element_by_xpath("(//input[@type='password'])[2]").send_keys(confirm_pass)
+                time.sleep(2)
+
+                driver.find_element_by_xpath("//button[contains(text(), 'Create Account')]").click()
                 time.sleep(1)
                 return True, username
                 
+		#return None, username      
 		
         except Exception as e:
             print (e)
@@ -200,4 +197,3 @@ class AddUser(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
