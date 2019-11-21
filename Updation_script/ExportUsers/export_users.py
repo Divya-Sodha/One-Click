@@ -1,3 +1,6 @@
+'''
+This script is used to download database of users from kolibri server in the Excel sheet.
+'''
 import sqlite3
 from openpyxl import Workbook
 

@@ -1,7 +1,7 @@
 #!/bin/bash
-'''
-This script is used to generate the log file which can be used to trace any errors if occured.
-'''
+
+#This script is used to generate the log file which can be used to trace any errors if occured.
+
 
 if [ ! -d /home/kolibri/Documents/log ]; then
   mkdir -p /home/kolibri/Documents/log;

@@ -1,7 +1,7 @@
 #!/bin/bash
-'''
-This script is useful for taking backup of kolibri database. The backup folder will be created in Documents.
-'''
+
+#This script is useful for taking backup of kolibri database. The backup folder will be created in Documents.
+
 
 if [ ! -d /home/kolibri/Documents/backup ]; then
   mkdir -p /home/kolibri/Documents/backup;

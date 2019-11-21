@@ -1,7 +1,7 @@
-'''
-This script is useful to install Google Chrome, nginx, temviewer and kolibri platform on the machine. Also, used to set platform.sh 
-and script_sync.sh bash files.
-'''
+
+#This script is useful to install Google Chrome, nginx, temviewer and kolibri platform on the machine. Also, used to set platform.sh 
+#and script_sync.sh bash files.
+
 
 echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
 
