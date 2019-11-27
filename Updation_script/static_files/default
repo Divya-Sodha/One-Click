@@ -8,7 +8,7 @@ log_format timed_combined '$remote_addr - $remote_user [$time_local] '
     '$request_time $upstream_response_time $pipe $upstream_cache_status v1';
 access_log /var/log/nginx/timing.log timed_combined;
 
-proxy_cache_path /home/kolibri/.kolibri/nginxcache levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=240h use_temp_path=off;
+proxy_cache_path /home/kolibri/.kolibri/nginxcache levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=240h;
 
 server {
 
@@ -42,7 +42,7 @@ server {
     location /zipcontent {
         proxy_pass http://kolibri;
         proxy_hide_header Content-Security-Policy;
-        proxy_ignore_headers X-Accel-Expires Expires Cache-Control Vary;
+        proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
         proxy_cache_valid any 240h;
         expires 365d;
         add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: http://${http_host}";
@@ -51,7 +51,7 @@ server {
 
     location /downloadcontent {
         proxy_pass http://kolibri;
-        proxy_ignore_headers X-Accel-Expires Expires Cache-Control Vary;
+        proxy_ignore_headers X-Accel-Expires Expires Cache-Control;
         proxy_cache_valid any 240h;
         expires 365d;
         add_header X-Proxy-Cache $upstream_cache_status;
@@ -60,7 +60,7 @@ server {
     location / {
         proxy_pass http://kolibri;
         add_header X-Proxy-Cache $upstream_cache_status;
-        proxy_ignore_headers Vary;
+        #proxy_ignore_headers;
         error_page 502 = @502;
     }
 
