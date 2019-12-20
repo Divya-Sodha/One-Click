@@ -13,7 +13,7 @@ if [ $? -eq 0 ]; then
     echo 's' | sudo -S rm -rf /home/kolibri/*.pex;
     notify-send "Backing up your current database in Videos folder";
     cp /home/kolibri/.kolibri/db.sqlite3 /home/kolibri/Videos/;
-    echo 's' | sudo apt-get install software-properties-common python-software-properties;
+    echo 's' | sudo apt-get install software-properties-common;
     echo 's' | sudo add-apt-repository ppa:learningequality/kolibri;
     echo 's' | sudo apt-get update;
     echo 's' | sudo apt-get install kolibri;
