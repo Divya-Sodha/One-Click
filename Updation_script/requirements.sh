@@ -8,6 +8,7 @@ if [ $? -eq 0 ]; then
 
   notify-send "Installation of packages is started."
   echo 's'| sudo -S apt-get update 2>> /home/kolibri/Desktop/Updation_script/updation.log
+  echo 's'| sudo -S apt-get install libnl-route-3-200=3.2.29-0ubuntu3 2>> /home/kolibri/Desktop/Updation_script/updation.log
   echo 'Y'| sudo -S apt-get install python-tk 2>> /home/kolibri/Desktop/Updation_script/updation.log
   echo 'Y'| sudo -S apt-get install python3-pip 2>> /home/kolibri/Desktop/Updation_script/updation.log
   echo 'Y'| sudo -S apt-get install sqlite3 2>> /home/kolibri/Desktop/Updation_script/updation.log
