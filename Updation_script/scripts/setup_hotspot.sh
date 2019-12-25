@@ -11,7 +11,8 @@ notify-send "Setting up hotspot on system"
 echo 'y'| sudo -S apt-get install dpkg-dev cdbs debhelper dh-autoreconf libev-dev libpcre3-dev pkg-config;
 echo 'y'| sudo -S apt-get -y purge dnsmasq hostapd kolibri-hotspot;
 echo 'y'| sudo -S apt-get install -y dnsmasq git;
-echo 'y'| sudo -S dpkg -i /home/kolibri/Desktop/Updation_script/kolibri-hotspot/hostapd/hostapd*.deb;
+#echo 'y'| sudo -S dpkg -i /home/kolibri/Desktop/Updation_script/kolibri-hotspot/hostapd/hostapd*.deb;
+echo 'y'| sudo apt-get install hostapd
 echo 'y'| sudo -S dpkg -i /home/kolibri/Desktop/Updation_script/kolibri-hotspot/kolibri-hotspot*.deb ) 2>> /home/kolibri/Desktop/Updation_script/updation.log
 echo "Hotspot setup done " >> /home/kolibri/Desktop/Updation_script/updation.log
 zenity --info --text="Hotspot setup Done."
