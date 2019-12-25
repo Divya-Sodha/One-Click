@@ -12,7 +12,7 @@ if [ $? -eq 0 ]; then
   echo 'Y'| sudo -S apt-get install python-tk 2>> /home/kolibri/Desktop/Updation_script/updation.log
   echo 'Y'| sudo -S apt-get install python3-pip 2>> /home/kolibri/Desktop/Updation_script/updation.log
   echo 'Y'| sudo -S apt-get install sqlite3 2>> /home/kolibri/Desktop/Updation_script/updation.log
-  echo 's'| sudo -S pip3 install openpyxl 2>> /home/kolibri/Desktop/Updation_script/updation.log
+  echo 's'| sudo -H pip3 install openpyxl 2>> /home/kolibri/Desktop/Updation_script/updation.log
   zenity --info --text="Setup is done."
   echo "Installation of packages is Done." >> /home/kolibri/Desktop/Updation_script/updation.log
 else
