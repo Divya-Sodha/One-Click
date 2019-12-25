@@ -31,7 +31,7 @@ if [ $? -eq 0 ]; then
     sudo cp /home/kolibri/Desktop/Updation_script/static_files/default  /etc/nginx/sites-available/ ) 2>> /home/kolibri/Desktop/Updation_script/updation.log
 
 
-    sudo pip3 -H install -r /home/kolibri/Desktop/Updation_script/Adding_Learners/.add_learners/requirements.txt 2>> /home/kolibri/Desktop/Updation_script/updation.log
+    sudo pip3 install -r /home/kolibri/Desktop/Updation_script/Adding_Learners/.add_learners/requirements.txt 2>> /home/kolibri/Desktop/Updation_script/updation.log
 
     notify-send "Online setup is done, Now setting up your platform"
 
