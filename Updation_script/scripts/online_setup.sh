@@ -27,16 +27,16 @@ if [ $? -eq 0 ]; then
     echo 's'| sudo -S apt-get update;
     echo 'Y'| sudo -S apt-get install nginx;
     sudo chown kolibri:kolibri -R /etc/nginx/;
-    cp /home/kolibri/Desktop/Updation_script/static_files/default  /etc/nginx/sites-enabled/;
-    cp /home/kolibri/Desktop/Updation_script/static_files/default  /etc/nginx/sites-available/ ) 2>> /home/kolibri/Desktop/Updation_script/updation.log
+    sudo cp /home/kolibri/Desktop/Updation_script/static_files/default  /etc/nginx/sites-enabled/;
+    sudo cp /home/kolibri/Desktop/Updation_script/static_files/default  /etc/nginx/sites-available/ ) 2>> /home/kolibri/Desktop/Updation_script/updation.log
 
 
-    sudo pip3 install -r /home/kolibri/Desktop/Updation_script/Adding_Learners/.add_learners/requirements.txt 2>> /home/kolibri/Desktop/Updation_script/updation.log
+    sudo pip3 -H install -r /home/kolibri/Desktop/Updation_script/Adding_Learners/.add_learners/requirements.txt 2>> /home/kolibri/Desktop/Updation_script/updation.log
 
     notify-send "Online setup is done, Now setting up your platform"
 
     # To install kolibri platform
-    (echo 's' | sudo apt-get install software-properties-common python-software-properties;
+    (echo 's' | sudo apt-get install software-properties-common;
     echo 's' | sudo add-apt-repository ppa:learningequality/kolibri;
     echo 's' | sudo apt-get update;
     echo 's' | sudo apt-get install kolibri;
@@ -44,12 +44,12 @@ if [ $? -eq 0 ]; then
 
 
     # To copy platform and script_sync bash files to the required positions and change their permissions.
-    (cp /home/kolibri/Desktop/Updation_script/static_files/platform.sh  /home/kolibri/;
-    chmod 777 /home/kolibri/platform.sh;
+    (sudo cp /home/kolibri/Desktop/Updation_script/static_files/platform.sh  /home/kolibri/;
+    sudo chmod 777 /home/kolibri/platform.sh;
     echo 's' | sudo -S chattr +i /home/kolibri/platform.sh)  2>> /home/kolibri/Desktop/Updation_script/updation.log
 
-    (cp /home/kolibri/Desktop/Updation_script/static_files/script_sync.sh  /home/kolibri/Desktop/;
-    chmod a+x /home/kolibri/Desktop/script_sync.sh;
+    (sudo cp /home/kolibri/Desktop/Updation_script/static_files/script_sync.sh  /home/kolibri/Desktop/;
+    sudo chmod a+x /home/kolibri/Desktop/script_sync.sh;
     echo 's' | sudo -S chattr +i /home/kolibri/Desktop/script_sync.sh) 2>> /home/kolibri/Desktop/Updation_script/updation.log
 
     echo "Online setup Done" >> /home/kolibri/Desktop/Updation_script/updation.log
