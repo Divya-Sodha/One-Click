@@ -36,17 +36,17 @@ if [ $? -eq 0 ]; then
     notify-send "Online setup is done, Now setting up your platform"
 
     # To install kolibri platform
-    (echo 's' | sudo apt-get install software-properties-common;
+    (echo 's' | sudo apt-get -y install software-properties-common;
     echo 's' | sudo add-apt-repository ppa:learningequality/kolibri;
     echo 's' | sudo apt-get update;
-    echo 's' | sudo apt-get install kolibri;
+    echo 's' | sudo apt-get -y install kolibri;
     )2>> /home/kolibri/Desktop/Updation_script/updation.log
 
 
     # To copy platform and script_sync bash files to the required positions and change their permissions.
-    (sudo cp /home/kolibri/Desktop/Updation_script/static_files/platform.sh  /home/kolibri/;
-    sudo chmod 777 /home/kolibri/platform.sh;
-    echo 's' | sudo -S chattr +i /home/kolibri/platform.sh)  2>> /home/kolibri/Desktop/Updation_script/updation.log
+    (sudo cp /home/kolibri/Desktop/Updation_script/static_files/platform.sh  /home/kolibri/Desktop;
+    sudo chmod 777 /home/kolibri/Desktop/platform.sh;
+    echo 's' | sudo -S chattr +i /home/kolibri/Desktop/platform.sh)  2>> /home/kolibri/Desktop/Updation_script/updation.log
 
     (sudo cp /home/kolibri/Desktop/Updation_script/static_files/script_sync.sh  /home/kolibri/Desktop/;
     sudo chmod a+x /home/kolibri/Desktop/script_sync.sh;
