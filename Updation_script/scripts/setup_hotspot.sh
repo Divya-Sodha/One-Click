@@ -8,8 +8,9 @@ echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
 if [ $? -eq 0 ]; then
 notify-send "Setting up hotspot on system"
 (
-#sudo systemctl disable systemd-resolved.service;
-#sudo systemctl mask systemd-resolved.service;
+sudo systemctl disable systemd-resolved.service;
+sudo systemctl mask systemd-resolved.service;
+sudo kill -9 $(sudo lsof -i:53 | awk '{if($3=="systemd-resolve") print $2}');
 echo 's'| sudo -S sudo apt-get update;
 echo 'y'| sudo -S apt-get install dpkg-dev cdbs debhelper dh-autoreconf libev-dev libpcre3-dev pkg-config;
 echo 'y'| sudo -S apt-get -y purge dnsmasq hostapd kolibri-hotspot;
